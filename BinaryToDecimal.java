@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 
 public class BinaryToDecimal {
     public static void main(String[] args) {
+        BinaryToDecimal converter = new BinaryToDecimal();
+        converter.run();
+    }
+
+    public void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.print("Input a binary number: ");
@@ -15,25 +20,25 @@ public class BinaryToDecimal {
                 System.err.println("Error: Invalid binary input. Please enter a valid binary number.");
                 return;
             }
+
             int decimalNumber = binaryToDecimal(binaryInput);
             System.out.println("Decimal Number: " + decimalNumber);
-        } 
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("Error reading input: " + e.getMessage());
-        } 
-        finally {
+        } finally {
             try {
                 reader.close();
-            } 
-            catch (IOException e) {
+            } catch (IOException e) {
                 System.err.println("Error closing BufferedReader: " + e.getMessage());
             }
         }
     }
-    private static boolean isValidBinary(String binary) {
+
+    public boolean isValidBinary(String binary) {
         return binary.matches("[01]+");
     }
-    private static int binaryToDecimal(String binary) {
+
+    public int binaryToDecimal(String binary) {
         int decimalNumber = 0;
         int power = 0;
         for (int i = binary.length() - 1; i >= 0; i--) {

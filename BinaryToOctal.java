@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 
 public class BinaryToOctal {
     public static void main(String[] args) {
+        BinaryToOctal converter = new BinaryToOctal();
+        converter.run();
+    }
+
+    public void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.print("Input a Binary Number: ");
@@ -18,11 +23,9 @@ public class BinaryToOctal {
             String octalNumber = binaryToOctal(binaryInput);
             System.out.println("Octal number: " + octalNumber);
 
-        } 
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("Error reading input: " + e.getMessage());
-        } 
-        finally {
+        } finally {
             try {
                 reader.close();
             } catch (IOException e) {
@@ -30,10 +33,12 @@ public class BinaryToOctal {
             }
         }
     }
-    private static boolean isValidBinary(String binary) {
+
+    public boolean isValidBinary(String binary) {
         return binary.matches("[01]+");
     }
-    private static String binaryToOctal(String binary) {
+
+    public String binaryToOctal(String binary) {
         while (binary.length() % 3 != 0) {
             binary = "0" + binary; 
         }

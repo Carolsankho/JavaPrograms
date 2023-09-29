@@ -6,6 +6,11 @@ import java.io.InputStreamReader;
 
 public class BinaryToHexadecimal {
     public static void main(String[] args) {
+        BinaryToHexadecimal converter = new BinaryToHexadecimal();
+        converter.run();
+    }
+
+    public void run() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         try {
             System.out.print("Input a Binary Number: ");
@@ -16,24 +21,24 @@ public class BinaryToHexadecimal {
             }
             String hexadecimalValue = binaryToHexadecimal(binaryInput);
             System.out.println("HexaDecimal value: " + hexadecimalValue);
-        } 
-        catch (IOException e) {
+        } catch (IOException e) {
             System.err.println("Error reading input: " + e.getMessage());
-        } 
-        finally {
+        } finally {
             try {
                 reader.close();
-            } 
-            catch (IOException e) {
+            } catch (IOException e) {
                 System.err.println("Error closing BufferedReader: " + e.getMessage());
             }
         }
-    }   
-    private static boolean isValidBinary(String binary) {
+    }
+
+    public boolean isValidBinary(String binary) {
         return binary.matches("[01]+");
     }
-    private static String binaryToHexadecimal(String binary) {
+
+    public String binaryToHexadecimal(String binary) {
         int decimalValue = Integer.parseInt(binary, 2);
         return Integer.toHexString(decimalValue).toUpperCase();
     }
 }
+
